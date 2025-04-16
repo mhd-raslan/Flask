@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Titanic</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+    
+            .container {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                width: 300px;
+                text-align: center;
+            }
+    
+            h1 {
+                color: #333;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+    
+            input[type="number"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+                background-color: #f9f9f9;
+            }
+    
+            button {
+                width: 100%;
+                padding: 12px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+    
+            button:hover {
+                background-color: #0056b3;
+            }
+    
+            p {
+                margin-top: 20px;
+                font-size: 16px;
+                color: #333;
+            }
+    
+            input::placeholder {
+                color: #aaa;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Survived or Not</h1>
+            <form action="{{ url_for('predict') }}" method="post">
+                <input type="number" name="age" placeholder="age" required /><br>
+                <input type="number" name="sibsp" placeholder="number of siblings/spouses" required /><br>
+                <input type="number" name="parch" placeholder="the number of parents/children" required /><br>
+                <input type="number" name="fare" placeholder="fare" required /><br>
+
+                <button type="submit">Predict</button>
+            </form>
+            <p>{{ prediction_text }}</p>
+        </div>
+    </body>
+    </html>
+    
+</html>
